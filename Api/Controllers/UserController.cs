@@ -32,6 +32,7 @@ namespace Api.Controllers.UserController
                 return request.Method switch
                 {
                     UserMethod.Login => Ok(await _api.Login(ParamsDeserialize<UserLoginRequestModel>(request.Params))),
+                    UserMethod.Search => Ok(await _api.Search(ParamsDeserialize<UserSearchRequestModel>(request.Params))),
                     _ => Ok(new ResponseModel("should have valid method")),
                 };
             }

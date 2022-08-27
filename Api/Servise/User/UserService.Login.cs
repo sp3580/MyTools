@@ -17,6 +17,7 @@ namespace Api.Services
                     Name = x.Name,
                     Email = x.Email,
                     Role = ((UserRole)x.Role).ToString(),
+                    Status = ((UserStatus)x.Status).ToString(),
                     Token = "",
                 })
                 .FirstOrDefaultAsync();

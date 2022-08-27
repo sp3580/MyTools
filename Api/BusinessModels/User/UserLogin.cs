@@ -23,6 +23,7 @@ namespace Api.BusinessModels.UserModels
         public string Name { get; set; } = String.Empty;
         public string Token { get; set; } = String.Empty;
         public string Email { get; set; } = String.Empty;
+        public string Status { get; set; } = String.Empty;
         public string Role { get; set; } = String.Empty;
     }
 }
