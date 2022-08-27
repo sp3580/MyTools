@@ -1,0 +1,80 @@
+﻿@{
+    ViewData["Title"] = "使用者管理";
+
+    if (TempData["Alert"] != null)
+    {
+        <script type="text/javascript">
+            Swal.fire("失敗", '@Html.Raw(TempData["Alert"])', "warning");
+        </script>
+    }
+    if (TempData["Success"] != null)
+    {
+        <script type="text/javascript">
+            Swal.fire("成功", '@Html.Raw(TempData["Success"])', "success");
+        </script>
+    }
+}
+
+@* ============== 導航標籤 ======================= *@
+@*
+   各功能頁面會有自己的導航標籤(只有li的部分)，
+   如需更改所有導航標籤結構就需編輯共用_Layout
+*@
+@* @section Breadcrumb{
+} *@
+
+
+@* ============== 搜尋區塊 ======================= *@
+@*
+1.各功能頁面會有自己的搜尋區塊，如不需更改結構只需編輯
+_Search，如需更改所有搜尋區塊結構就需編輯共用
+_Layout
+
+2.如果需要關閉搜尋的 UI框 @ViewData["CloseSearch"]
+給予 d-none 即可關閉，如果不需要就不寫
+@ViewData["CloseSearch"]
+*@
+@* @section SearchSection{
+    <partial name="./_Search" />
+} *@
+
+
+@* ============== Modal ======================= *@
+<!-- Modal 開通 -->
+@* @section ModalSection{
+} *@
+
+
+
+
+@* ============== 內容列表 ======================= *@
+@*
+頁面名稱  User/
+Index    為各功能導入頁
+Add      顯示新增頁
+Edit     顯示編輯頁
+Detail   為各功能頁預覽
+
+元件
+_List    為各功能頁首頁 Index 的列表。
+_Detail  為各功能編輯與新增的列表。
+_Edit    為各功能編輯與新增的列表。
+*@
+
+@section ContentList{
+    <partial name="./_List" />
+}
+
+@* ============== JS ======================= *@
+@section Scripts{
+
+    <!-- Page level plugins -->
+    <script src="vendor/datatables/jquery.dataTables.min.js"></script>
+    <script src="vendor/datatables/dataTables.bootstrap4.min.js"></script>
+
+    <!-- Page level custom scripts -->
+    <script src="js/demo/datatables-demo.js"></script>
+
+}
+
+
