@@ -1,26 +1,71 @@
 ﻿@{
-    if (TempData["Alert"] != null)
-    {
-        <script type="text/javascript">
-            Swal.fire("失敗", '@Html.Raw(TempData["Alert"])', "warning");
-        </script>
-    }
-    if (TempData["Success"] != null)
-    {
-        <script type="text/javascript">
-            Swal.fire("成功", '@Html.Raw(TempData["Success"])', "success");
-        </script>
-    }
+   Layout = "_LayoutLogin";
 }
 
-@section ContentList{
-    <div class="text-center">
-        <div class="error mx-auto" data-text="Hello">Hello</div>
-        <p class="lead text-gray-800 mb-5">感謝您的使用</p>
-        <p class="text-gray-500 mb-0">此為練習專案，存放一些小工具與小功能</p>
+<style>
+    #checkEye.login{
+        top: 38%;
+        right: 85px;
+    }
+</style>
+
+<a type="hidden" asp-controller="User" asp-action="index" id="CloseModal" class="btn-close"></a>
+
+<div class="row justify-content-center">
+
+    <div class="col-xl-10 col-lg-12 col-md-9">
+
+        <div class="card o-hidden border-0 shadow-lg my-5">
+            <div class="card-body p-0">
+                <!-- Nested Row within Card Body -->
+                <div class="row">
+                    <div class="col-lg-6 d-none d-lg-block bg-login-image"></div>
+                    <div class="col-lg-6">
+                        <div class="p-5">
+                            <div class="text-center">
+                                <h1 class="h4 text-gray-900 mb-4">歡迎回來</h1>
+                            </div>
+
+                            <form class="user" asp-action="Login" asp-controller="Home">
+                                <div class="form-group">
+                                    <input type="text" class="form-control form-control-user"
+                                        name="Account" placeholder="請輸入帳號" required>
+                                </div>
+                                <div class="form-group">
+                                    <i id="checkEye" class="fas fa-eye login"></i>
+                                    <input type="password" class="form-control form-control-user checkEyePwd"
+                                        name="Pwd" placeholder="請輸入密碼" required>
+                                </div>
+                                <div class="form-group">
+                                    <div class="custom-control custom-checkbox small">
+                                        <input type="checkbox" class="custom-control-input" id="customCheck">
+                                        <label class="custom-control-label" for="customCheck">記住我</label>
+                                    </div>
+                                </div>
+                                <button type="submit" class="btn btn-primary btn-user btn-block">
+                                    登入
+                                </button>
+                                <hr>
+                                @* <a href="index.html" class="btn btn-google btn-user btn-block">
+                                    <i class="fab fa-google fa-fw"></i> 使用 Google 登入
+                                </a>
+                                <a href="index.html" class="btn btn-facebook btn-user btn-block">
+                                    <i class="fab fa-facebook-f fa-fw"></i> 使用 Facebook 登入
+                                </a> *@
+                            </form>
+
+                            <div class="text-center">
+                                <a class="small" href="forgot-password.html">忘記密碼</a>
+                            </div>
+                            <div class="text-center">
+                                <a class="small" href="register.html">註冊帳號</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
     </div>
-}
 
-@* ============== JS ======================= *@
-@section Scripts{
-}
+</div>
