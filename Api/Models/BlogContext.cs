@@ -26,8 +26,6 @@ namespace Api.Models
         {
             modelBuilder.Entity<User>(entity =>
             {
-                entity.HasNoKey();
-
                 entity.ToTable("User");
 
                 entity.Property(e => e.Account).HasMaxLength(256);

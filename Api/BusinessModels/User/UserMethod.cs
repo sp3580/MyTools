@@ -8,6 +8,8 @@ namespace Api.BusinessModels.UserModels
 {
     public static class UserMethod
     {
+        public const string Delete = "delete";
+        public const string CheckExist = "check_exist";
         public const string Create = "create";
         public const string Detail = "detail";
         public const string Modify = "modify";

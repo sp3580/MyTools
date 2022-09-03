@@ -6,24 +6,25 @@ namespace Api.Services
 {
     public partial class UserService : IUserService
     {
-        public async Task<UserLoginResponseModel> Login(UserLoginRequestModel request)
+        public async Task<UserDetailResponseModel> Detail(UserDetailRequestModel request)
         {
             var user = await _db.Users
-                .Where(x => x.Account == request.Account && x.Pwd == request.Pwd && x.Status != (int)UserStatus.delete)
+                .Where(x => x.Id == request.User_id && x.Status != (int)UserStatus.delete)
                 .Select(x => new UserInfo()
                 {
                     Uid = x.Id,
                     Account = x.Account,
                     Name = x.Name,
                     Email = x.Email,
-                    Role = ((UserRole)x.Role).ToString(),
                     Status = ((UserStatus)x.Status).ToString(),
-                    Token = "",
+                    Role = ((UserRole)x.Role).ToString(),
+                    Create_time = x.CreateTime,
+                    Update_time = x.UpdateTime
                 })
                 .FirstOrDefaultAsync();
 
-            if(user == null) return new() { Result = "fail", Message = "帳號或密碼錯誤"};
-            if(user.Status == (UserStatus.disabled).ToString()) return new() { Result = "fail", Message = "該帳號已停用" };
+            if(user == null)
+                return new() { Result = "fail", Message = "使用者不存在" };
 
             return new() { Result = "success", Info = user };
         }

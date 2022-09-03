@@ -6,10 +6,10 @@ namespace Api.Services
 {
     public partial class UserService : IUserService
     {
-        public async Task<UserSearchResponseModel> Search(UserSearchRequestModel request)
+        public async Task<UserCheckExistResponseModel> CheckExist(UserCheckExistRequestModel request)
         {
-            var list = await _db.Users
-                .Where(x => x.Status != (int)UserStatus.delete)
+            var user = await _db.Users
+                .Where(x => x.Account == request.Account && x.Email == request.Email && x.Status != (int)UserStatus.delete)
                 .Select(x => new UserInfo()
                 {
                     Uid = x.Id,
@@ -19,9 +19,11 @@ namespace Api.Services
                     Status = ((UserStatus)x.Status).ToString(),
                     Role = ((UserRole)x.Role).ToString(),
                 })
-                .ToListAsync();
+                .FirstOrDefaultAsync();
 
-            return new() { Result = "success", List = list };
+            if(user is not null)
+                return new() { Result = "fail", Message = "使用者已存在" };
+            return new() { Result = "success" };
         }
     }
 }

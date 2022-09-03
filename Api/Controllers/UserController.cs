@@ -33,6 +33,11 @@ namespace Api.Controllers.UserController
                 {
                     UserMethod.Login => Ok(await _api.Login(ParamsDeserialize<UserLoginRequestModel>(request.Params))),
                     UserMethod.Search => Ok(await _api.Search(ParamsDeserialize<UserSearchRequestModel>(request.Params))),
+                    UserMethod.Detail => Ok(await _api.Detail(ParamsDeserialize<UserDetailRequestModel>(request.Params))),
+                    UserMethod.CheckExist => Ok(await _api.CheckExist(ParamsDeserialize<UserCheckExistRequestModel>(request.Params))),
+                    UserMethod.Create => Ok(await _api.Create(ParamsDeserialize<UserCreateRequestModel>(request.Params))),
+                    UserMethod.Modify => Ok(await _api.Modify(ParamsDeserialize<UserModifyRequestModel>(request.Params))),
+                    UserMethod.Delete => Ok(await _api.Delete(ParamsDeserialize<UserDeleteRequestModel>(request.Params))),
                     _ => Ok(new ResponseModel("should have valid method")),
                 };
             }

@@ -10,6 +10,7 @@ namespace Api.BusinessModels.UserModels
     {
         enabled = 1,
         disabled = 2,
+        delete = 3,
     }
     public enum UserRole
     {

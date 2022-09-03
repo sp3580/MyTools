@@ -12,6 +12,7 @@ namespace Api.Models
         public string Email { get; set; } = null!;
         public int Role { get; set; }
         public int Status { get; set; }
+        public int? Profile { get; set; }
         public DateTime CreateTime { get; set; }
         public DateTime UpdateTime { get; set; }
     }

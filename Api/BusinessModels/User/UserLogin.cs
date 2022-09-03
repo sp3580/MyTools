@@ -25,5 +25,8 @@ namespace Api.BusinessModels.UserModels
         public string Email { get; set; } = String.Empty;
         public string Status { get; set; } = String.Empty;
         public string Role { get; set; } = String.Empty;
+        public int? Profile { get; set; }
+        public DateTime Create_time { get; set; }
+        public DateTime Update_time { get; set; }
     }
 }
