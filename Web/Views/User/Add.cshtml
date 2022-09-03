@@ -1,0 +1,12 @@
+﻿@{
+   ViewData["Title"] = "使用者新增";
+}
+@section ContentList{
+   <div class="mb-2 d-flex justify-content-between">
+      <a asp-controller="User" asp-action="Index" class="btn btn-secondary">返回</a>
+      <button type="button" id="addBtn" class="btn btn-info waves-effect waves-light">新增</button>
+   </div>
+   <form asp-action="Add" asp-controller="User" method="post" id="addForm">
+      <partial name="./_Add"/>
+   </form>
+}

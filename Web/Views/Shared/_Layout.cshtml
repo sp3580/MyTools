@@ -11,9 +11,14 @@
 
     <!-- Custom styles for this template-->
     <link href="~/css/sb-admin-2.min.css" rel="stylesheet">
+    <link href="~/css/site.css" rel="stylesheet">
 
-    <!-- Custom styles for this page -->
-    <link href="vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
+    <!-- Sweetalert2 -->
+    @* <script src="~/lib/sweetalert.min.js"></script> *@
+    <script src="~/lib/sweetalert2.all.min.js"></script>
+
+    @* <!-- Custom styles for this page -->
+    <link href="vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet"> *@
 
     <!-- Bootstrap core JavaScript-->
     <script src="~/vendor/jquery/jquery.min.js"></script>
@@ -49,6 +54,18 @@
                     {
                         <h1 class="h3 mb-2 text-gray-800">@ViewData["Title"]</h1>
                     }
+                    @if (TempData["Alert"] != null)
+                    {
+                        <script type="text/javascript">
+                            Swal.fire("失敗", "@Html.Raw(TempData["Alert"])", "warning");
+                        </script>
+                    }
+                    @if (TempData["Success"] != null)
+                    {
+                        <script type="text/javascript">
+                            Swal.fire("成功", "@Html.Raw(TempData["Success"])", "success");
+                        </script>
+                    }
                     @RenderSection("ContentList",required: false)
                 </div>
                 <!-- /.container-fluid -->
@@ -60,7 +77,7 @@
             <footer class="sticky-footer bg-white">
                 <div class="container my-auto">
                     <div class="copyright text-center my-auto">
-                        <span>Copyright &copy; Your Website 2020</span>
+                        <span>Copyright &copy; My Tools 2022</span>
                     </div>
                 </div>
             </footer>
@@ -97,9 +114,6 @@
 
     <!-- Custom scripts for all pages-->
     <script src="~/js/sb-admin-2.min.js"></script>
-
-    <!-- Sweetalert2 -->
-    <script src="~/lib/sweetalert2.all.min.js"></script>
 
     @await RenderSectionAsync("Scripts", required: false)
 </body>

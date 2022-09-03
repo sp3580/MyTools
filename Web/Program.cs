@@ -15,7 +15,7 @@ builder.Services.AddRazorPages();
 builder.Services.AddControllersWithViews()
     // .AddSessionStateTempDataProvider() // 上傳圖片需要使用這個
     .AddJsonOptions(options => {
-        options.JsonSerializerOptions.PropertyNamingPolicy = null;                                  //Json回傳參數名稱按照model的大小寫
+        // options.JsonSerializerOptions.PropertyNamingPolicy = null;                                  //Json回傳參數名稱按照model的大小寫
         options.JsonSerializerOptions.DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull; //Json回傳參數null不回傳
         options.JsonSerializerOptions.Encoder = System.Text.Encodings.Web.JavaScriptEncoder.Create(
             UnicodeRanges.BasicLatin, UnicodeRanges.CjkUnifiedIdeographs);                          //使用預設編碼器

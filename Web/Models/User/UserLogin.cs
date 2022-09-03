@@ -20,5 +20,7 @@ namespace Web.Models.User
         public string Email { get; set; } = String.Empty;
         public string Status { get; set; } = String.Empty;
         public string Role { get; set; } = String.Empty;
+        public DateTime Create_time { get; set; }
+        public DateTime Update_time { get; set; }
     }
 }

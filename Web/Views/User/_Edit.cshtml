@@ -1,0 +1,90 @@
+﻿@model Web.ViewModels.User.UserViewModel;
+
+@if(Model != null && Model.DetailData != null && Model.DetailData.Info != null)
+{
+    var info = Model.DetailData.Info;
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="card">
+                <div class="card-body">
+                    <table class="table table-hover mb-0">
+                        <tbody>
+                            <tr>
+                                <th class="w-5"><span class="text-danger">*</span> 名稱</th>
+                                <td>
+                                    <input type="text" class="form-control" asp-for="ModifyRequest.Name" placeholder="請輸入名稱" require>
+                                </td>
+                            </tr>
+                            <tr>
+                                <input type="hidden" asp-for="ModifyRequest.User_id">
+                                <input type="hidden" asp-for="ModifyRequest.Account">
+                                <input type="hidden" asp-for="ModifyRequest.Email">
+                                <th class="w-5">帳號</th>
+                                <td>@info.Account</td>
+                            </tr>
+                            <tr>
+                                <th class="w-5"><span class="text-danger">*</span> 密碼</th>
+                                <td>
+                                    <button type="button" onclick="" class="ml-2 btn btn-info waves-effect waves-light">重設密碼</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th class="w-5">信箱</th>
+                                <td>@info.Email</td>
+                            </tr>
+                            <tr>
+                                <th class="w-5"><span class="text-danger">*</span> 權限</th>
+                                <td>
+                                    <select class="form-control" asp-for="ModifyRequest.Role">
+                                        <option value="">請選擇</option>
+                                        <option value="normal">一般使用者</option>
+                                        <option value="manage">管理員</option>
+                                    </select>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th class="w-5"><span class="text-danger">*</span> 狀態</th>
+                                <td>
+                                    <select class="form-control" asp-for="ModifyRequest.Status">
+                                        <option value="">請選擇</option>
+                                        <option value="enabled">啟用</option>
+                                        <option value="disabled">停用</option>
+                                    </select>
+                                </td>
+
+                            </tr>
+                            <tr>
+                                <th class="w-5">建立日期</th>
+                                <td>@info.Create_time</td>
+                            </tr>
+                            <tr>
+                                <th class="w-5">更新日期</th>
+                                <td>@DateTime.Now</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <!--end /table-->
+                </div>
+                <!--end /tableresponsive-->
+            </div>
+        </div>
+    </div>
+    <!--end row-->
+
+    <script>
+        $(document).ready(function(){
+            $("#saveBtn").click(function ()
+            {
+                $("#saveForm").submit();
+            });
+            $("#checkEye").click(function () {
+                if($(this).hasClass('fa-eye')){
+                    $(".checkEyePwd").attr('type', 'text');
+                }else{
+                    $(".checkEyePwd").attr('type', 'password');
+                }
+                $(this).toggleClass('fa-eye').toggleClass('fa-eye-slash');
+            });
+        });
+    </script>
+}

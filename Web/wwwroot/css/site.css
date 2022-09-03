@@ -1,4 +1,4 @@
-html {
+/* html {
   font-size: 14px;
 }
 
@@ -15,4 +15,12 @@ html {
 
 body {
   margin-bottom: 60px;
+} */
+
+/*眼睛*/
+#checkEye {
+  position: absolute;
+  top: 50%;
+  right: 50px;
+  transform: translateY(55%);
 }

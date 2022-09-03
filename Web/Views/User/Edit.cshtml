@@ -1,0 +1,15 @@
+﻿@{
+   ViewData["Title"] = "使用者編輯";
+}
+@section ContentList{
+   <div class="mb-2 d-flex justify-content-between">
+      <a asp-controller="User" asp-action="Index" class="btn btn-secondary">返回</a>
+      <button type="button" id="saveBtn" class="btn btn-primary waves-effect waves-light">儲存</button>
+   </div>
+   <form asp-action="Edit" asp-controller="User" method="post" id="saveForm">
+      <partial name="./_Edit"/>
+   </form>
+}
+
+
+ˊ

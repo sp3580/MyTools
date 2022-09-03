@@ -1,0 +1,11 @@
+﻿@{
+   ViewData["Title"] = "使用者檢視";
+}
+@section ContentList{
+   <div class="mb-2 d-flex justify-content-between">
+      <a asp-controller="User" asp-action="Index" class="btn btn-secondary">返回</a>
+   </div>
+   <form>
+      <partial name="./_Detail"/>
+   </form>
+}
