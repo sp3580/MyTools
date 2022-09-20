@@ -38,6 +38,7 @@ namespace Api.Controllers.UserController
                     UserMethod.Create => Ok(await _api.Create(ParamsDeserialize<UserCreateRequestModel>(request.Params))),
                     UserMethod.Modify => Ok(await _api.Modify(ParamsDeserialize<UserModifyRequestModel>(request.Params))),
                     UserMethod.Delete => Ok(await _api.Delete(ParamsDeserialize<UserDeleteRequestModel>(request.Params))),
+                    UserMethod.Export => Ok(await _api.Export(ParamsDeserialize<UserExportRequestModel>(request.Params))),
                     _ => Ok(new ResponseModel("should have valid method")),
                 };
             }

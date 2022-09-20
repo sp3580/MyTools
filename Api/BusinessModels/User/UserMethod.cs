@@ -17,5 +17,6 @@ namespace Api.BusinessModels.UserModels
         public const string Login = "login";
         public const string ForgetPwd = "forget_pwd";
         public const string ChangePwd = "change_pwd";
+        public const string Export = "export";
     }
 }

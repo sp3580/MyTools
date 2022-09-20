@@ -9,5 +9,6 @@
         public Task<UserCreateResponseModel> Create(UserCreateRequestModel request);
         public Task<UserModifyResponseModel> Modify(UserModifyRequestModel request);
         public Task<UserDeleteResponseModel> Delete(UserDeleteRequestModel request);
+        public Task<UserExportResponseModel> Export(UserExportRequestModel request);
     }
 }
