@@ -164,14 +164,15 @@ namespace Web.Controllers
             });
             var response_data = _responseService.GetData<UserDetailResponseModel>(response_string);
 
-            if(response_data.result != "success")
-            {
-                TempData["Alert"] = response_data.message;
-                return RedirectToAction("Index");
-            }
             if(response_data == null)
             {
                 TempData["Alert"] = "查無資料";
+                return RedirectToAction("Index");
+            }
+
+            if(response_data.result != "success")
+            {
+                TempData["Alert"] = response_data.message;
                 return RedirectToAction("Index");
             }
 
@@ -277,6 +278,39 @@ namespace Web.Controllers
         public IActionResult Error()
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+        }
+
+        [SessionService.Check_Session_Filter]
+        public async Task<IActionResult> Export()
+        {
+            try
+            {
+                _user_Session = SessionService.Get_Session(HttpContext);
+            }
+            catch (System.Exception)
+            {
+                TempData["Alert"] = "獲取登入者資訊失敗";
+                return RedirectToAction("Index");
+            }
+
+            var response_string = await _requestService.Post("user", "export", HttpContext.Request.Headers["User-Agent"], new UserExportRequestModel(){
+                Uid = _user_Session.Uid,
+            });
+            var response_data = _responseService.GetData<UserExportResponseModel>(response_string);
+
+            if(response_data == null)
+            {
+                TempData["Alert"] = "查無資料";
+                return RedirectToAction("Index");
+            }
+
+            if(response_data.result != "success")
+            {
+                TempData["Alert"] = response_data.message;
+                return RedirectToAction("Index");
+            }
+
+            return File(response_data.File.File_stream, response_data.File.File_type, response_data.File.File_name);
         }
     }
 }
