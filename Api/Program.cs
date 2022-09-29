@@ -22,6 +22,7 @@ builder.Services.AddDbContext<BlogContext>(
 
 // DI Service
 builder.Services.AddScoped<Api.BusinessModels.UserModels.IUserService, UserService>();
+builder.Services.AddScoped<Api.BusinessModels.UploadModels.IUploadService, UploadService>();
 
 var app = builder.Build();
 
